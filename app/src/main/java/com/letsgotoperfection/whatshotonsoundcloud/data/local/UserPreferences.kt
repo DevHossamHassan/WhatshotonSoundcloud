@@ -1,4 +1,4 @@
-package com.letsgotoperfection.whatshotonsoundcloud.data
+package com.letsgotoperfection.whatshotonsoundcloud.data.local
 
 /**
  * @author hossam.

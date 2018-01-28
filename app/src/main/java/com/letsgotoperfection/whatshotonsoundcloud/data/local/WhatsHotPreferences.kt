@@ -1,4 +1,4 @@
-package com.letsgotoperfection.whatshotonsoundcloud.data
+package com.letsgotoperfection.whatshotonsoundcloud.data.local
 
 /**
  * @author hossam.
@@ -33,7 +33,7 @@ abstract class WhatsHotPreferences {
          * **This method needs to be called before any other usage of PrefDelegate!!**
          */
         fun init(context: Context) {
-            this.context = WeakReference(context)
+            Companion.context = WeakReference(context)
         }
     }
 

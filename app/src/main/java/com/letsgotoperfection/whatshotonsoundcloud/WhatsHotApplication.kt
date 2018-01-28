@@ -1,7 +1,7 @@
 package com.letsgotoperfection.whatshotonsoundcloud
 
 import android.app.Application
-import com.letsgotoperfection.whatshotonsoundcloud.data.WhatsHotPreferences
+import com.letsgotoperfection.whatshotonsoundcloud.data.local.WhatsHotPreferences
 
 /**
  * @author hossam.

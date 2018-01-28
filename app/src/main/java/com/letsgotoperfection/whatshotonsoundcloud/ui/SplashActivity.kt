@@ -1,9 +1,10 @@
-package com.letsgotoperfection.whatshotonsoundcloud
+package com.letsgotoperfection.whatshotonsoundcloud.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import com.letsgotoperfection.whatshotonsoundcloud.R
 
 class SplashActivity : AppCompatActivity() {
 

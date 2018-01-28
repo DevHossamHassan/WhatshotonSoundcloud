@@ -1,7 +1,8 @@
-package com.letsgotoperfection.whatshotonsoundcloud
+package com.letsgotoperfection.whatshotonsoundcloud.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.letsgotoperfection.whatshotonsoundcloud.R
 
 class MainActivity : AppCompatActivity() {
 

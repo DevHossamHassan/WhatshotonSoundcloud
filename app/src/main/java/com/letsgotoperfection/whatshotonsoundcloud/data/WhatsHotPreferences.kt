@@ -23,7 +23,7 @@ import kotlin.reflect.KProperty
  * }
  * ```
  */
-abstract class WhatshotPrefrences {
+abstract class WhatsHotPreferences {
     companion object {
         private var context: WeakReference<Context>? = null
 

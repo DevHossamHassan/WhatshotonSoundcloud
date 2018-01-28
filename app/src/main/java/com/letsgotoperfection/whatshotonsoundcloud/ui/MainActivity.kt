@@ -1,13 +1,19 @@
 package com.letsgotoperfection.whatshotonsoundcloud.ui
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.base.BaseActivity
 import com.letsgotoperfection.whatshotonsoundcloud.R
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun getTitleResourceId(): String {
+        return getString(R.string.app_name)
+    }
+
+    override fun init() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

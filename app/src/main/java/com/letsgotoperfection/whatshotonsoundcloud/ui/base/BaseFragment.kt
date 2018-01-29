@@ -1,4 +1,4 @@
-package com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.base
+package com.letsgotoperfection.whatshotonsoundcloud.ui.base
 
 import android.app.Fragment
 import android.os.Bundle
@@ -22,11 +22,11 @@ abstract class BaseFragment<P : BaseContract.Presenter> : Fragment(), BaseContra
     override val viewContext: Fragment
         get() = this
 
-    protected abstract fun init()
+    protected abstract fun init(savedInstanceState: Bundle?)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(fragmentLayoutResourceId, container, false)
-        init()
+        init(savedInstanceState)
         return rootView
     }
 

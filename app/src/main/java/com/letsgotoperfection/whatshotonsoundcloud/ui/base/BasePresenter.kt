@@ -1,4 +1,4 @@
-package com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.base
+package com.letsgotoperfection.whatshotonsoundcloud.ui.base
 
 import java.lang.ref.WeakReference
 

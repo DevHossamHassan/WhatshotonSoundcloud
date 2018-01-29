@@ -1,11 +1,11 @@
 package com.letsgotoperfection.whatshotonsoundcloud.data.crawlers
 
+import RetrofitProvider
 import android.app.job.JobParameters
 import android.app.job.JobService
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.util.Log
-import com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.API.RetrofitProvider
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.Rx2Bus
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.RxEvents
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.sortByTrendingTracks

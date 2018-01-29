@@ -1,6 +1,6 @@
 package com.letsgotoperfection.whatshotonsoundcloud.ui.hottracks
 
-import com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.API.RetrofitProvider
+import RetrofitProvider
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.sortByTrendingTracks
 import com.letsgotoperfection.whatshotonsoundcloud.models.Track
 import io.reactivex.android.schedulers.AndroidSchedulers

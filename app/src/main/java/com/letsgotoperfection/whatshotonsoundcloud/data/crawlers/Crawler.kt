@@ -1,36 +1,32 @@
-package com.letsgotoperfection.whatshotonsoundcloud.ui.hottracks
+package com.letsgotoperfection.whatshotonsoundcloud.data.crawlers
 
+import android.app.job.JobParameters
+import android.app.job.JobService
+import android.os.Build
+import android.support.annotation.RequiresApi
+import android.util.Log
 import com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.API.RetrofitProvider
+import com.letsgotoperfection.whatshotonsoundcloud.extentions.Rx2Bus
+import com.letsgotoperfection.whatshotonsoundcloud.extentions.RxEvents
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.sortByTrendingTracks
-import com.letsgotoperfection.whatshotonsoundcloud.models.Track
+import com.letsgotoperfection.whatshotonsoundcloud.ui.hottracks.HotTracksModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 /**
  * @author hossam.
  */
-class HotTracksPresenter(private var hotTracksListView: HotTracksListContract.View) : HotTracksListContract.Presenter {
-
-    override fun getExistedTracks(): MutableList<Track> {
-        return HotTracksModel.tracks
+class Crawler : JobService() {
+    override fun onStopJob(params: JobParameters?): Boolean {
+        Log.d("WhatsHotOnSoundCloud", "Successfully job has been executed.")
+        return true
     }
 
-    override fun getTracksListSize(): Int {
-        return HotTracksModel.tracks.size
-    }
-
-    override fun onLoadMore() {
-        loadTracks()
-    }
-
-    private fun loadTracks() {
-        hotTracksListView.showProgressBar()
-        if (HotTracksModel.tracks.isNotEmpty()) {
-            hotTracksListView.updateDate()
-            hotTracksListView.hideProgressBar()
-            return
+    override fun onStartJob(params: JobParameters?): Boolean {
+        if (!Rx2Bus.hasObservers()) {
+            return false
         }
-
         RetrofitProvider.loadFollowers()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -46,20 +42,15 @@ class HotTracksPresenter(private var hotTracksListView: HotTracksListContract.Vi
                                                 val x = HotTracksModel.tracks.sortByTrendingTracks()
                                                 HotTracksModel.tracks.clear()
                                                 HotTracksModel.tracks.addAll(x)
-                                                hotTracksListView.updateDate()
-                                                hotTracksListView.hideProgressBar()
                                             })
                                 })
-
+                                Rx2Bus.send(RxEvents.CrawlerEvents.DataUpdated)
                             }
                         },
                         { e ->
-                            hotTracksListView.hideProgressBar()
-                            hotTracksListView.showToast("Something went wrong! :" + e.message)
+                            e.printStackTrace()
                         })
+        return true
     }
 
-    override fun destroy() {
-        HotTracksModel.destroy()
-    }
 }

@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.letsgotoperfection.whatshotonsoundcloud.R
+import com.letsgotoperfection.whatshotonsoundcloud.extentions.Rx2Bus
+import com.letsgotoperfection.whatshotonsoundcloud.extentions.RxEvents
 import com.letsgotoperfection.whatshotonsoundcloud.ui.base.BaseFragment
 import com.letsgotoperfection.whatshotonsoundcloud.ui.listeners.OnRecyclerViewScrollToTheEnd
 import kotlinx.android.synthetic.main.hot_tracks_fragment.*
@@ -23,6 +26,12 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
 
     override fun init(savedInstanceState: Bundle?) {
         presenter = HotTracksPresenter(this)
+        Rx2Bus.toObservable().subscribe({ event ->
+            if (event == RxEvents.CrawlerEvents.DataUpdated) {
+                Log.e("WhatsHotOnSoundCloud", "Date Updated Please swipe down to refresh")
+                updateDate()
+            }
+        })
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {

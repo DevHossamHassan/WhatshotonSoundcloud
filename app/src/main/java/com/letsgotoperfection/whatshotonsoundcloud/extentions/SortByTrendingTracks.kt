@@ -6,7 +6,7 @@ import com.letsgotoperfection.whatshotonsoundcloud.models.Track
  * @author hossam.
  */
 fun MutableList<Track>.sortByTrendingTracks(): MutableList<Track> {
-    return (this.distinct().sortedWith(
+    return (this.distinctBy({ it.id }).sortedWith(
             compareBy({ it.playback_count }, { it.favoritings_count }, { it.reposts_count })))
             .reversed()
             .toMutableList()

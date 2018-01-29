@@ -35,4 +35,13 @@ object RetrofitProvider {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())!!
 
+    fun loadFollowers() =
+            soundCloudApi.getFollowers()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())!!
+
+    fun loadTracks(userId: Int) =
+            soundCloudApi.getTracks(userId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())!!
 }

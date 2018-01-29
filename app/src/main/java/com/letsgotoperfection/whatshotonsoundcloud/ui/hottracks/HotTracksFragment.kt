@@ -23,13 +23,17 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
 
     override fun init(savedInstanceState: Bundle?) {
         presenter = HotTracksPresenter(this)
-
+        if (savedInstanceState == null) {
+            presenter.onLoadMore()
+        }
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = HotTracksListAdapter(presenter as HotTracksPresenter)
         hotTracksRecyclerView.setHasFixedSize(true)
+        hotTracksRecyclerView.setItemViewCacheSize(20)
+        hotTracksRecyclerView.isDrawingCacheEnabled = true
         hotTracksRecyclerView.itemAnimator = DefaultItemAnimator()
         linLayManager = LinearLayoutManager(activity.applicationContext)
         hotTracksRecyclerView.layoutManager = linLayManager
@@ -44,7 +48,7 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
                         super.onScrolled(recyclerView, dx, dy)
                         if (linLayManager.findLastCompletelyVisibleItemPosition()
                                 == adapter.itemCount - 1) {
-                            presenter.onLoadMore()
+//                            presenter.onLoadMore()
                         }
                     }
                 })

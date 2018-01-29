@@ -3,7 +3,7 @@
 buildscript {
     ext {
         // Application
-        application_id = 'com.letsgotoperfection.kotlin_clean_architecture_mvp_sample'
+        application_id = 'com.letsgotoperfection.whatshotonsoundcloud'
         version_code = 1
         version_name = '1.0'
         compile_sdk_version = 26

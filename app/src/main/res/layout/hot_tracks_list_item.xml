@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
-             android:layout_height="250dp"
+             android:layout_height="140dp"
              android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imgView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="140dp"
         android:scaleType="centerCrop"
         />
 
@@ -23,63 +23,80 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="false"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:background="@color/textBackground"
             android:ems="50"
             android:lines="1"
+            android:padding="8dp"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             />
 
-        <TextView
+        <ImageView
             android:id="@+id/tvPublishedAtLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="Published at: "
-            android:textColor="@android:color/white"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_play"
+            android:tint="@color/colorAccent"
             />
 
         <TextView
-            android:id="@+id/tvPublishedAt"
+            android:id="@+id/tvPlayback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="5dp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@+id/tvPublishedAtLabel"
+            android:background="@color/textBackground"
             android:textColor="@android:color/white"
+            />
 
+        <ImageView
+            android:id="@+id/imgReposted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/tvPlayback"
+            android:src="@drawable/ic_share"
+            android:tint="@color/colorAccent"
             />
 
         <TextView
-            android:id="@+id/tvTagsLabel"
+            android:id="@+id/tvReposted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@+id/tvPublishedAt"
-            android:text="tags: "
+            android:layout_toEndOf="@id/imgReposted"
+            android:background="@color/textBackground"
             android:textColor="@android:color/white"
-            android:visibility="gone"
+            />
+
+        <ImageView
+            android:id="@+id/imgFavorited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="5dp"
+            android:layout_toEndOf="@id/tvReposted"
+            android:src="@drawable/ic_favorite"
+            android:tint="@color/colorAccent"
             />
 
         <TextView
-            android:id="@+id/tvTags"
+            android:id="@+id/tvFavorited"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="5dp"
-            android:layout_toRightOf="@+id/tvTagsLabel"
+            android:layout_toEndOf="@id/imgFavorited"
+            android:background="@color/textBackground"
             android:textColor="@android:color/white"
-            android:textSize="12sp"
-            android:visibility="gone"
             />
 
     </RelativeLayout>

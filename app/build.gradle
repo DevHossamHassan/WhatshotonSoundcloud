@@ -27,6 +27,7 @@ android {
         buildConfigField "String", "SOUNDCLOUD_CLIENT_ID", getProps("SOUNDCLOUD_CLIENT_ID")
         buildConfigField "String", "SOUNDCLOUD_CLIENT_SECRET", getProps("SOUNDCLOUD_CLIENT_SECRET")
         buildConfigField "String", "REDIRECT_URI", getProps("REDIRECT_URI")
+        buildConfigField "int", "USER_ID", getProps("USER_ID")
     }
     buildTypes {
         release {

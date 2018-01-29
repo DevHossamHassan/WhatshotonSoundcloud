@@ -1,5 +1,4 @@
-package com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.API
-
+import com.letsgotoperfection.whatshotonsoundcloud.data.remote.SoundCloudApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit

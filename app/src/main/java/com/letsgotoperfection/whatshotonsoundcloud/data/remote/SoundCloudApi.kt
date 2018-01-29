@@ -1,5 +1,4 @@
-package com.letsgotoperfection.kotlin_clean_architecture_mvp_sample.API
-
+package com.letsgotoperfection.whatshotonsoundcloud.data.remote
 import com.letsgotoperfection.whatshotonsoundcloud.BuildConfig
 import com.letsgotoperfection.whatshotonsoundcloud.models.FollowersResponse
 import com.letsgotoperfection.whatshotonsoundcloud.models.SoundCloudUser

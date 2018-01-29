@@ -23,9 +23,6 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
 
     override fun init(savedInstanceState: Bundle?) {
         presenter = HotTracksPresenter(this)
-        if (savedInstanceState == null) {
-            presenter.onLoadMore()
-        }
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
@@ -39,6 +36,9 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
         hotTracksRecyclerView.layoutManager = linLayManager
         hotTracksRecyclerView.adapter = adapter
         setRecyclerViewListeners()
+        if (savedInstanceState == null) {
+            presenter.onLoadMore()
+        }
     }
 
     private fun setRecyclerViewListeners() {
@@ -77,10 +77,5 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
 
     override fun updateInsertedData(itemCount: Int) {
         adapter.notifyItemRangeInserted(presenter.getTracksListSize() - itemCount, itemCount)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.destroy()
     }
 }

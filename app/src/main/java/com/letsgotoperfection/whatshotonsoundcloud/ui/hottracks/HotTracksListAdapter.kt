@@ -32,7 +32,7 @@ class HotTracksListAdapter(private val presenter: HotTracksPresenter) : Recycler
         val track: Track = presenter.getExistedTracks()[position]
         holder.itemView.tvTitle.text = track.title
         holder.itemView.tvPublishedAt.text = track.playback_count.toString()
-        holder.itemView.imgView.loadUrl(track.attachments_uri)
+        holder.itemView.imgView.loadUrl(track.artwork_url)
     }
 
     override fun getItemCount(): Int {

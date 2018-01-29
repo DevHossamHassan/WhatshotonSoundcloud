@@ -15,10 +15,11 @@ interface SoundCloudApi {
     @GET("/users/${BuildConfig.USER_ID}?client_id=${BuildConfig.SOUNDCLOUD_CLIENT_ID}")
     fun getUser(): Single<SoundCloudUser>
 
-    @GET("/users/${BuildConfig.USER_ID}/followers?client_id=${BuildConfig.SOUNDCLOUD_CLIENT_ID}")
+    @GET("/users/${BuildConfig.USER_ID}/followers?client_id=${BuildConfig.SOUNDCLOUD_CLIENT_ID}&limit=20")
     fun getFollowers(): Single<FollowersResponse>
 
-    @GET("/users/${BuildConfig.USER_ID}/tracks?client_id=${BuildConfig.SOUNDCLOUD_CLIENT_ID}")
+    @GET("/users/${BuildConfig.USER_ID}/favorites?client_id=${BuildConfig.SOUNDCLOUD_CLIENT_ID}")
     fun getTracks(): Single<MutableList<Track>>
+
 
 }

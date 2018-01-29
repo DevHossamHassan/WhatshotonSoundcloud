@@ -12,7 +12,9 @@ import com.letsgotoperfection.whatshotonsoundcloud.extentions.Rx2Bus
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.RxEvents
 import com.letsgotoperfection.whatshotonsoundcloud.ui.base.BaseFragment
 import com.letsgotoperfection.whatshotonsoundcloud.ui.listeners.OnRecyclerViewScrollToTheEnd
+import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.hot_tracks_fragment.*
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -26,12 +28,15 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
 
     override fun init(savedInstanceState: Bundle?) {
         presenter = HotTracksPresenter(this)
-        Rx2Bus.toObservable().subscribe({ event ->
-            if (event == RxEvents.CrawlerEvents.DataUpdated) {
-                Log.e("WhatsHotOnSoundCloud", "Date Updated Please swipe down to refresh")
-                updateDate()
-            }
-        })
+        val tapEventEmitter = Rx2Bus.toObservable().share()
+        val debouncedEventEmitter = tapEventEmitter.debounce(1, TimeUnit.SECONDS)
+        debouncedEventEmitter.observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ event ->
+                    if (event == RxEvents.CrawlerEvents.DataUpdated) {
+                        Log.e("WhatsHotOnSoundCloud", "Date Updated Please swipe down to refresh")
+                        updateDate()
+                    }
+                })
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {

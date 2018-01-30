@@ -43,7 +43,7 @@ class Crawler : JobService() {
                                                     val x = HotTracksModel.tracks.sortByTrendingTracks()
                                                     HotTracksModel.tracks = x
                                                 }
-                                            })
+                                            }, { e -> e.printStackTrace() })
                                 })
                                 Rx2Bus.send(RxEvents.CrawlerEvents.DataUpdated)
                             }

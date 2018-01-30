@@ -49,7 +49,7 @@ class HotTracksPresenter(private var hotTracksListView: HotTracksListContract.Vi
                                                     hotTracksListView.updateDate()
                                                     hotTracksListView.hideProgressBar()
                                                 }
-                                            })
+                                            }, { e -> e.printStackTrace() })
                                 })
 
                             }

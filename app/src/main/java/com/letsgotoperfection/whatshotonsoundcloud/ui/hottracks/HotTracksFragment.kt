@@ -10,6 +10,8 @@ import android.widget.Toast
 import com.letsgotoperfection.whatshotonsoundcloud.R
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.Rx2Bus
 import com.letsgotoperfection.whatshotonsoundcloud.extentions.RxEvents
+import com.letsgotoperfection.whatshotonsoundcloud.extentions.hide
+import com.letsgotoperfection.whatshotonsoundcloud.extentions.show
 import com.letsgotoperfection.whatshotonsoundcloud.ui.base.BaseFragment
 import com.letsgotoperfection.whatshotonsoundcloud.ui.listeners.OnRecyclerViewScrollToTheEnd
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -33,8 +35,8 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
         debouncedEventEmitter.observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ event ->
                     if (event == RxEvents.CrawlerEvents.DataUpdated) {
-                        Log.e("WhatsHotOnSoundCloud", "Date Updated Please swipe down to refresh")
-                        updateDate()
+                        Log.d("WhatsHotOnSoundCloud", "Date Updated Please swipe down to refresh")
+                        btnUpdateButton.show()
                     }
                 })
     }
@@ -50,6 +52,7 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
         hotTracksRecyclerView.layoutManager = linLayManager
         hotTracksRecyclerView.adapter = adapter
         setRecyclerViewListeners()
+        setOnUpdateButtonClickListener()
         if (savedInstanceState == null) {
             presenter.onLoadMore()
         }
@@ -67,6 +70,13 @@ class HotTracksFragment : BaseFragment<HotTracksListContract.Presenter>(), HotTr
                     }
                 })
         setSwipeRefreshListeners()
+    }
+
+    private fun setOnUpdateButtonClickListener() {
+        btnUpdateButton.setOnClickListener {
+            btnUpdateButton?.hide()
+            updateDate()
+        }
     }
 
     private fun setSwipeRefreshListeners() {

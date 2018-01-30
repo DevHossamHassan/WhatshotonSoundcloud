@@ -43,11 +43,12 @@ class HotTracksPresenter(private var hotTracksListView: HotTracksListContract.Vi
                                             .observeOn(AndroidSchedulers.mainThread())
                                             .subscribe({ track ->
                                                 HotTracksModel.tracks.addAll(track)
-                                                val x = HotTracksModel.tracks.sortByTrendingTracks()
-                                                HotTracksModel.tracks.clear()
-                                                HotTracksModel.tracks.addAll(x)
-                                                hotTracksListView.updateDate()
-                                                hotTracksListView.hideProgressBar()
+                                                if (follower.id == followers.collection.last().id) {
+                                                    val x = HotTracksModel.tracks.sortByTrendingTracks()
+                                                    HotTracksModel.tracks = x
+                                                    hotTracksListView.updateDate()
+                                                    hotTracksListView.hideProgressBar()
+                                                }
                                             })
                                 })
 

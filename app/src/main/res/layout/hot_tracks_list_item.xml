@@ -1,103 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="140dp"
              android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imgView"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:scaleType="centerCrop"
-        />
-
-    <RelativeLayout
-        android:id="@+id/main_view"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="4dp">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="false"
+        <RelativeLayout
+            android:id="@+id/main_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@color/textBackground"
-            android:ems="50"
-            android:lines="1"
-            android:padding="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            />
+            >
 
-        <ImageView
-            android:id="@+id/tvPublishedAtLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="5dp"
-            android:src="@drawable/ic_play"
-            android:tint="@color/colorAccent"
-            />
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="160dp"
+                android:layout_height="140dp"
+                android:scaleType="fitXY"
+                tools:src="@tools:sample/avatars"
+                />
 
-        <TextView
-            android:id="@+id/tvPlayback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_toRightOf="@+id/tvPublishedAtLabel"
-            android:background="@color/textBackground"
-            android:textColor="@android:color/white"
-            />
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="false"
+                android:layout_toRightOf="@id/imgView"
+                android:ems="50"
+                android:lines="2"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="@tools:sample/lorem/random"
+                />
 
-        <ImageView
-            android:id="@+id/imgReposted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="5dp"
-            android:layout_toEndOf="@id/tvPlayback"
-            android:src="@drawable/ic_share"
-            android:tint="@color/colorAccent"
-            />
+            <ImageView
+                android:id="@+id/tvPublishedAtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:layout_toRightOf="@id/imgView"
+                android:src="@drawable/ic_play"
+                android:tint="@color/colorAccent"
+                />
 
-        <TextView
-            android:id="@+id/tvReposted"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_toEndOf="@id/imgReposted"
-            android:background="@color/textBackground"
-            android:textColor="@android:color/white"
-            />
+            <TextView
+                android:id="@+id/tvPlayback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/tvPublishedAtLabel"
+                android:textColor="@android:color/white"
+                />
 
-        <ImageView
-            android:id="@+id/imgFavorited"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="5dp"
-            android:layout_toEndOf="@id/tvReposted"
-            android:src="@drawable/ic_favorite"
-            android:tint="@color/colorAccent"
-            />
+            <ImageView
+                android:id="@+id/imgReposted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:layout_toEndOf="@id/tvPlayback"
+                android:src="@drawable/ic_share"
+                android:tint="@color/colorAccent"
+                />
 
-        <TextView
-            android:id="@+id/tvFavorited"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:layout_toEndOf="@id/imgFavorited"
-            android:background="@color/textBackground"
-            android:textColor="@android:color/white"
-            />
+            <TextView
+                android:id="@+id/tvReposted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@id/imgReposted"
+                android:textColor="@android:color/white"
+                />
 
-    </RelativeLayout>
+            <ImageView
+                android:id="@+id/imgFavorited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="5dp"
+                android:layout_toEndOf="@id/tvReposted"
+                android:src="@drawable/ic_favorite"
+                android:tint="@color/colorAccent"
+                />
+
+            <TextView
+                android:id="@+id/tvFavorited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@id/imgFavorited"
+                android:textColor="@android:color/white"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </FrameLayout>

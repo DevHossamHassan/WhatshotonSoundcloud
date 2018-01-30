@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">What’s hot on Soundcloud?</string>
-    <string name="hot_tracks_was_updated_wanna_update">Tracks was updated, Want to update?</string>
+    <string name="hot_tracks_was_updated_wanna_update">Tracks have been updated, Want to update?</string>
 </resources>
